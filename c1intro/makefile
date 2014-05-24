@@ -6,6 +6,7 @@ exetgts = e1-1+ e1-2+ e1-3+ e1-4+ \
 		e1-6+ \
 		e1-7+ \
 		e1-8+ \
+		e1-15+ \
 		funcOrder+ int+
 
 tgts = e1-9replaceSpace	\
@@ -13,6 +14,7 @@ tgts = e1-9replaceSpace	\
 	   e1-12	\
 	   e1-13histogram	\
 	   e1-14	\
+	   e1-16longestline	\
 
 $(tgts) :
 

@@ -7,6 +7,41 @@
 #define LINE_LEN 40
 #define V_HEIGHT 16
 
+void vertical(float cn[], float maxcn);
+void horizontal(float cn[], float maxcn);
+
+int main(int argc, char * argv[])
+{
+    char c,a=EOF;
+    float cn[26*2] = {};
+    float maxcn =0;
+    int i;
+
+    void (*fp)(float [], float);
+    if ( 2 == argc && 0 == strcmp("-v", argv[1]) )
+        fp = vertical;
+    else
+        fp = horizontal;
+
+    while ((c = getchar()) != EOF)
+    {
+        if ( 'a' <= c && c <= 'z' ){
+            ++cn[ c - 'a' ];
+        }else if ( 'A' <= c && c <= 'Z' ){
+            ++cn[ c - 'A' + 26];
+        }
+    }
+
+    for (i=0; i< 26*2 ; ++i)
+    {
+        if ( cn[i] >= maxcn)
+            maxcn = cn[i];
+    }
+
+    fp( cn , maxcn);
+    return 0;
+}
+
 void vertical(float cn[], float maxcn){
     int i,j;
     int h;
@@ -51,36 +86,4 @@ void horizontal(float cn[], float maxcn){
             putchar( '|' );
         putchar('\n');
     }
-}
-
-int main(int argc, char * argv[])
-{
-    char c,a=EOF;
-    float cn[26*2] = {};
-    float maxcn =0;
-    int i;
-
-    void (*fp)(float [], float);
-    if ( 2 == argc && 0 == strcmp("-v", argv[1]) )
-        fp = vertical;
-    else
-        fp = horizontal;
-
-    while ((c = getchar()) != EOF)
-    {
-        if ( 'a' <= c && c <= 'z' ){
-            ++cn[ c - 'a' ];
-        }else if ( 'A' <= c && c <= 'Z' ){
-            ++cn[ c - 'A' + 26];
-        }
-    }
-
-    for (i=0; i< 26*2 ; ++i)
-    {
-        if ( cn[i] >= maxcn)
-            maxcn = cn[i];
-    }
-
-    fp( cn , maxcn);
-    return 0;
 }
