@@ -8,8 +8,10 @@ exetgts = e1-1+ e1-2+ e1-3+ e1-4+ \
 		e1-8+ \
 		main+ histogram+ funcOrder+ int+
 
-tgts = e1-9replaceSpace\
-	   e1-10showEscape
+tgts = e1-9replaceSpace	\
+	   e1-10showEscape	\
+	   e1-12	\
+	   e1-13histogram
 
 $(tgts) : %: %
 
