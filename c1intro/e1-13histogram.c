@@ -33,7 +33,7 @@ int main(int argc, char * argv[])
     char word[100];
     int len = 0;
 
-    void (*fp)();
+    void (*fp)( int, char []);
     if ( 2 == argc && 0 == strcmp("-v", argv[1]) )
         fp = vertical;
     else
