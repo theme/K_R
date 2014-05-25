@@ -15,6 +15,11 @@ tgts = e1-9replaceSpace	\
 	   e1-13histogram	\
 	   e1-14	\
 	   e1-16longestline	\
+	   e1-17	\
+	   e1-19	\
+	   e1-20detab	\
+	   e1-21entab	\
+	   e1-22fold
 
 $(tgts) :
 
