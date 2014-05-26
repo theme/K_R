@@ -78,13 +78,13 @@ char repeatString(){
     putchar('\"');  // left "
     e = getchar();
 
-    if ( e == EOF)
+    if ( e == EOF)  // broken EOF
         return EOF;
     else if ( e == '\"'){
         putchar('\"');  // right "
         return '\"';
     }
-    else{
+    else{   // into string
         putchar(e);
         
         while ( (f = getchar() ) != EOF)
@@ -97,8 +97,8 @@ char repeatString(){
                 e = f;
             }
         }
+        return EOF;
     }
-    return repeatString();
 }
 
 char eatLineComment(){
