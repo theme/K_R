@@ -19,7 +19,8 @@ tgts = e1-9replaceSpace	\
 	   e1-19	\
 	   e1-20detab	\
 	   e1-21entab	\
-	   e1-22fold
+	   e1-22fold	\
+	   e1-23rmcom.c
 
 $(tgts) :
 
