@@ -89,6 +89,28 @@ char cLineComment(){
 
 char cBlockComment(){
     char e, f;
+    e = gc();
+    if( e == EOF )
+        return e;
+    if( e == '*' ){
+        f = gc();
+        if( f == EOF || f == '/')
+            return f;
+    }else{
+        while ( (f = gc() ) != EOF)
+        {
+            if ( e == '*' && f == '/'){
+                return f;
+            }else {
+                if( e =='/' && f == '*' )
+                    printf("%ld:%ld: warning: /* in block comment\n",
+                            crow, ccol );
+                e = f;
+            }
+        }
+        return EOF;
+    }
+
     while ( ( e = gc() ) != EOF && e != '*')
         ;
 
@@ -150,24 +172,24 @@ char csyntax( const char r) {
             case '}':
                 errc("missing left", pair(c));
                 break;
-            case '\'':
+            case '\'':      // Char ?
                 if( ( b = cquotes('\'') ) != '\''){
                     err(row,col, "char constant missing right",'\'');
                 }
                 break;
-            case '\"':
+            case '\"':      // String ?
                 if( ( b = cquotes('\"') ) != '\"'){
                     err(row,col, "string constant missing right",'\"');
                 }
                 break;
             case '/':
                 if ( (c = gc()) != EOF) {
-                    if ( c == '*')
+                    if ( c == '*')  // Block comment ?
                     {
                         if( ( b = ccom('*') ) != '/'){
                             err(row,col, "bad block comment",' ');
                         }
-                    }else if ( c=='/' ){
+                    }else if ( c=='/' ){    // Line comment ?
                         if( ( b = ccom('/') ) != '\n'){
                             err(row,col, "bad line comment",' ');
                         }
