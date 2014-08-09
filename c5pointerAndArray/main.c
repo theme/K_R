@@ -7,7 +7,7 @@ char c;
 int main(int argc, char * argv[])
 {
     extern int times;
-    int a[][2][2] = {1,2,3,4,5,6,7,8,9};
+    int a[][2][3] = {1,2,3,4,5,6,{{},{1,1,1}},8,9};
 
     sayhello(" msg in main");
     printf("%d\n", times);
@@ -16,13 +16,15 @@ int main(int argc, char * argv[])
 
     {
         int i;
-        for ( i=0; i<10; i++ )
+        for ( i=0; i<14; i++ )
         {
-            printf("%d", a[i/4][(i%4)/2][i%2] );
+            // each row , each one
+            printf("%d", a[i/6][(i%6)/3][(i%3)/1] );
         }
         printf("\n");
     }
 
+    printf("-----\n");
     {
         int *pi = 0;
         printf("%p\n", pi);
