@@ -16,4 +16,4 @@ math: math.o
 .PHONY: clean
 clean:
 	find . -maxdepth 1 -type f -perm /111 -exec rm {} \;
-	find ./*.o -maxdepth 1 -type f -exec rm {} \;
+	find . -maxdepth 1 -type f -name \*.o -exec rm {} \;
